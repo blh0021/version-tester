@@ -9,15 +9,23 @@ getEntry() {
 	while IFS=',' read -r appname appversion appcmd; do
 		case $appname in
 			"aws") actualVersion="$(aws --version 2>&1 | awk '{aws=$1; split(aws,awsarr,"/"); print awsarr[2]}')";;
+			"curl") actualVersion="$(curl --version 2>&1 | head -n1 | awk '{print $2}')";;
 			"docker") actualVersion="$(docker version | grep Version | head -n1 | awk '{print $2}')";;
 			"g++") actualVersion="$(g++ -dumpversion)";;
 			"gcc") actualVersion="$(gcc -dumpversion)";;
+			"gradle") actualVersion="$(gradle --version | grep Gradle | awk '{print $2}')";;
 			"grunt") actualVersion="$(grunt --version | awk '{print $2}' | head -n1)";;
-			"node") actualVersion="$(node --version)";;
 			"java") actualVersion="$(java -version 2>&1 | head -n 1 | cut -d'"' -f2)";;
+			"kernel") actualVersion="$(uname -r)";;
+			"mvn") actualVersion="$(mvn --version 2>&1 | head -n1 | awk '{print $3}')";;
+			"node") actualVersion="$(node --version)";;
+			"perl") actualVersion="$(perl -e 'print $];')";;
 			"php") actualVersion="$(php --version 2>&1 | head -n1 | awk '{print $2}')";;
 			"pip") actualVersion="$(pip --version 2>&1 | awk '{print $2}')";;
+			"puppet") actualVersion="$(puppet --version)";;
 			"python") actualVersion=$(python --version 2>&1 | awk '{print $2}');;
+			"ruby") actualVersion="$(ruby --version 2>&1 | head -n1 | awk '{print $2}')";;
+			"wget") actualVersion="$(wget --version 2>&1 | head -n1 | awk '{print $3}')";;
 			*) actualVersion="$($appcmd)";;
 		esac
 		if [ "$actualVersion" == "" ]; then

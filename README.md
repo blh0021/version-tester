@@ -4,6 +4,13 @@
 Download the bash script and create an app.csv file with your dependencies.
 `./versions.bash` or `./versions.bash configfile.csv`
 
+### CSV
+The csv file contains 3 columns. 
+* application name
+* expected version
+* cli script to get version
+
+Some know cli tools are preconfigured and you can leave the 3 column blank.
 
 ## Example app.csv
 ```
