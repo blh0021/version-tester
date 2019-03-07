@@ -1,0 +1,8 @@
+node,10.0.0,node --version
+java,1.8.0,
+docker,18.0.0,
+python,2.7.10,
+gcc,4,
+g++,4,
+pip,0,
+php,0,
